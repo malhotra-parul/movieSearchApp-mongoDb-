@@ -191,12 +191,18 @@ export default class MoviesDAO {
     to complete this task, but you might have to do something about `const`.
     */
 
-    const queryPipeline = [
+    let queryPipeline = [
       matchStage,
       sortStage,
+      skipStage,
+      limitStage,
+      facetStage
+       ]
+      
       // TODO Ticket: Faceted Search
       // Add the stages to queryPipeline in the correct order.
-    ]
+  
+    
 
     try {
       const results = await (await movies.aggregate(queryPipeline)).next()
